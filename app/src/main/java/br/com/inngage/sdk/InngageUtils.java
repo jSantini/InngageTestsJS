@@ -407,7 +407,7 @@ public class InngageUtils {
         AlertDialog.Builder builder = new AlertDialog.Builder(appContext);
         builder.setTitle(title);
         builder.setMessage(body);
-        builder.setPositiveButton("Ver detalhes 123",
+        builder.setPositiveButton("Ver detalhes x1",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         try {
