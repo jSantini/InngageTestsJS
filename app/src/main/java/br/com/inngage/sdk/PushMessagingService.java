@@ -35,7 +35,7 @@ public class PushMessagingService extends FirebaseMessagingService {
     /**
      * Get the push notification event
      *
-     * @param  remoteMessage  Remote message from push notification
+     * @param remoteMessage Remote message from push notification
      */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -52,7 +52,7 @@ public class PushMessagingService extends FirebaseMessagingService {
     /**
      * Parse the remote notification to JSON object
      *
-     * @param  remoteMessage The push notification message
+     * @param remoteMessage The push notification message
      * @return jsonObject The JSON object to remoteMessage
      */
     private JSONObject parseRemoteMessageToJson(RemoteMessage remoteMessage) {
@@ -76,9 +76,8 @@ public class PushMessagingService extends FirebaseMessagingService {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             try {
                 notificationManager.createNotificationChannel(channel);
-            }catch (Exception e)
-            {
-                Log.d(TAG, "createNotificationChannel Exception: "+ e);
+            } catch (Exception e) {
+                Log.d(TAG, "createNotificationChannel Exception: " + e);
             }
         }
     }
@@ -86,15 +85,16 @@ public class PushMessagingService extends FirebaseMessagingService {
     /**
      * Show the push notification
      *
-     * @param  jsonObject The message title
+     * @param jsonObject The message title
      */
 
     private void showNotification(JSONObject jsonObject) {
 
         Log.d(TAG, "Starting process to showing notification");
-        PendingIntent pendingIntent ;
+        PendingIntent pendingIntent;
         String activityClass = "", activityPackage = "", bigPicture = "";
 
+        Log.d("jeanLib", "my json obj ------> " + jsonObject.toString());
         Intent intent = new Intent();
         try {
 
@@ -134,20 +134,20 @@ public class PushMessagingService extends FirebaseMessagingService {
             if (!jsonObject.isNull("picture")) {
 
                 bigPicture = jsonObject.getString("picture");
-                Log.d(TAG, "We Have a IMAGE : "+bigPicture);
+                Log.d(TAG, "We Have a IMAGE : " + bigPicture);
                 intent.putExtra("big_picture", bigPicture);
             }
 
         } catch (JSONException e) {
 
-            Log.e(TAG, "Error getting JSON field \n" +e);
+            Log.e(TAG, "Error getting JSON field \n" + e);
         }
-        if("".equals(activityClass)) {
+        if ("".equals(activityClass)) {
 
             Log.e(TAG, "The activity class name not found in message, make sure the setting has been made in Inngage Platform: Configuration > Platform");
             return;
         }
-        if("".equals(activityPackage)) {
+        if ("".equals(activityPackage)) {
 
             Log.e(TAG, "The package name of the application not found in message, make sure the setting has been made in Inngage Platform: Configuration > Platform");
             return;
@@ -157,28 +157,25 @@ public class PushMessagingService extends FirebaseMessagingService {
         Log.d(TAG, "Redirecting user to " + activityPackage + "." + activityClass);
         Log.d(TAG, "Adding Flags to the Pending Intent ");
         int requestID = (int) System.currentTimeMillis();
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
 
-        pendingIntent = PendingIntent.getActivity(this, requestID, intent, PendingIntent.FLAG_UPDATE_CURRENT );
+        pendingIntent = PendingIntent.getActivity(this, requestID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Log.d(TAG, "pending intent : "+pendingIntent.toString());
-
+        Log.d(TAG, "pending intent : " + pendingIntent.toString());
 
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         createNotificationChannel();
-        Log.d(TAG, "Notification Channel Created : "+CHANNEL);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,CHANNEL);
+        Log.d(TAG, "Notification Channel Created : " + CHANNEL);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL);
         //builder.setSmallIcon(R.mipmap.ic_launcher);
         int id = this.getResources().getIdentifier("ic_notification", "drawable", this.getPackageName());
-        if(id!=0 && android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP  )
-        {
+        if (id != 0 && android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             builder.setSmallIcon(id);
             builder.setColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
-        } else
-        {
+        } else {
             int id2 = this.getResources().getIdentifier("ic_launcher", "mipmap", this.getPackageName());
             builder.setSmallIcon(id2);
         }
@@ -192,12 +189,12 @@ public class PushMessagingService extends FirebaseMessagingService {
 ////            builder.setSmallIcon(id2);
 //        }
 
-        if(!"".equals(bigPicture) && bigPicture != null) {
+        if (!"".equals(bigPicture) && bigPicture != null) {
 
             InngageUtils utils = new InngageUtils();
             Bitmap image = utils.getBitmapfromUrl(bigPicture);
 
-            if(image != null) {
+            if (image != null) {
 
                 builder.setLargeIcon(image);
                 builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(image).setSummaryText(body));
@@ -206,22 +203,16 @@ public class PushMessagingService extends FirebaseMessagingService {
             }
         }
 
-            builder.setContentTitle(title);
-            builder.setContentText(body);
-            builder.setPriority(NotificationCompat.PRIORITY_MAX);
-            builder.setAutoCancel(true);
-            builder.setSound(defaultSoundUri);
-            builder.setContentIntent(pendingIntent);
+        builder.setContentTitle(title);
+        builder.setContentText(body);
+        builder.setPriority(NotificationCompat.PRIORITY_MAX);
+        builder.setAutoCancel(true);
+        builder.setSound(defaultSoundUri);
+        builder.setContentIntent(pendingIntent);
 
 
-            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
-            notificationManagerCompat.notify(notifyID, builder.build());
-
-
-
-
-
-
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(notifyID, builder.build());
 
 
     }
