@@ -25,7 +25,7 @@ import java.util.Random;
 
 public class PushMessagingService extends FirebaseMessagingService {
 
-    private static final String TAG = "inngage-lib";
+    private static final String TAG = "inngage-lib-jean";
     String body, title = null;
     final String CHANNEL = "CH01";
     Random random = new Random();
