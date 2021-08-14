@@ -113,7 +113,7 @@ public class PushMessagingService extends FirebaseMessagingService {
                 intent.putExtra("EXTRA_BODY", body);
             }
             if (!jsonObject.isNull("url")) {
-
+                Log.d("jean1", "url value native --> " + jsonObject.getString("url"));
                 intent.putExtra("EXTRA_URL", jsonObject.getString("url"));
             }
             if (!jsonObject.isNull("act_class")) {
