@@ -416,7 +416,7 @@ public class InngageUtils {
         boolean hasNotification = !"".equals(notifyID) || !"".equals(title) || !"".equals(body);
         if (url.isEmpty()) {
             if (hasNotification) {
-                InngageUtils.showDialog(
+                showDialog(
                         title,
                         body,
                         notifyID,
@@ -426,7 +426,7 @@ public class InngageUtils {
             }
 
         } else if (hasNotification) {
-            InngageUtils.showDialogwithLink(
+            showDialogwithLink(
                     title,
                     body,
                     notifyID,
