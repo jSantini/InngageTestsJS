@@ -10,9 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="223ebcca-ba0b-4743-90ba-a651e952d2a8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/inngage/sdk/InngageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/inngage/sdk/InngageUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -168,54 +168,54 @@ public class InngageUtils {
         return new JSONObject(responseStrBuilder.toString());
     }
 
-    public JSONObject createLocationRequest(String deviceID, double lat, double lon) {
+//    public JSONObject createLocationRequest(String deviceID, double lat, double lon) {
+//
+//        jsonBody = new JSONObject();
+//        jsonObj = new JSONObject();
+//
+//        try {
+//
+//            jsonBody.put("uuid", deviceID);
+//            jsonBody.put("lat", lat);
+//            jsonBody.put("lon", lon);
+//            jsonObj.put("registerGeolocationRequest", jsonBody);
+//
+//            if (BuildConfig.DEBUG) {
+//
+//                Log.d(TAG, "JSON Request: " + jsonObj.toString());
+//            }
+//
+//        } catch (Throwable t) {
+//
+//            Log.d(TAG, "Error in createLocationRequest: " + t);
+//        }
+//        return jsonObj;
+//    }
 
-        jsonBody = new JSONObject();
-        jsonObj = new JSONObject();
-
-        try {
-
-            jsonBody.put("uuid", deviceID);
-            jsonBody.put("lat", lat);
-            jsonBody.put("lon", lon);
-            jsonObj.put("registerGeolocationRequest", jsonBody);
-
-            if (BuildConfig.DEBUG) {
-
-                Log.d(TAG, "JSON Request: " + jsonObj.toString());
-            }
-
-        } catch (Throwable t) {
-
-            Log.d(TAG, "Error in createLocationRequest: " + t);
-        }
-        return jsonObj;
-    }
-
-    public JSONObject createLocationRequest(String deviceID, double lat, double lon, String appToken) {
-
-        jsonBody = new JSONObject();
-        jsonObj = new JSONObject();
-
-        try {
-
-            jsonBody.put("uuid", deviceID);
-            jsonBody.put("lat", lat);
-            jsonBody.put("lon", lon);
-            jsonBody.put("app_token", appToken);
-            jsonObj.put("registerGeolocationRequest", jsonBody);
-
-            if (BuildConfig.DEBUG) {
-
-                Log.d(TAG, "JSON Request: " + jsonObj.toString());
-            }
-
-        } catch (Throwable t) {
-
-            Log.d(TAG, "Error in createLocationRequest: " + t);
-        }
-        return jsonObj;
-    }
+//    public JSONObject createLocationRequest(String deviceID, double lat, double lon, String appToken) {
+//
+//        jsonBody = new JSONObject();
+//        jsonObj = new JSONObject();
+//
+//        try {
+//
+//            jsonBody.put("uuid", deviceID);
+//            jsonBody.put("lat", lat);
+//            jsonBody.put("lon", lon);
+//            jsonBody.put("app_token", appToken);
+//            jsonObj.put("registerGeolocationRequest", jsonBody);
+//
+//            if (BuildConfig.DEBUG) {
+//
+//                Log.d(TAG, "JSON Request: " + jsonObj.toString());
+//            }
+//
+//        } catch (Throwable t) {
+//
+//            Log.d(TAG, "Error in createLocationRequest: " + t);
+//        }
+//        return jsonObj;
+//    }
 
     public static void callbackNotification(String notifyID, String appToken) {
 
