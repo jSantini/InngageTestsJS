@@ -27,7 +27,7 @@ ext {
 
     PUBLISH_GROUP_ID = 'br.com.inngage.sdk'
     PUBLISH_ARTIFACT_ID = 'inngage-lib'
-    PUBLISH_VERSION = '3.0.6-betav3'
+    PUBLISH_VERSION = '3.0.7-betav3'
 }
 
 android {
@@ -50,7 +50,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 28
         versionCode 1
-        versionName "3.0.6-betav3"
+        versionName "3.0.7-betav3"
     }
     buildTypes {
         release {
@@ -78,8 +78,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:21.1.0'
     implementation 'com.google.android.gms:play-services-gcm:17.0.0'
     /---------------------------------------------------------------/
-    //implementation 'com.google.android.gms:play-services-maps:17.0.1'
-    //implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.gms:play-services-iid:17.0.0'
     /------------------------[Old Version]-------------------------/
     implementation 'javax.inject:javax.inject:1'
